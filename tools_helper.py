@@ -50,13 +50,13 @@ def data_process(data: str) -> str:
     """
     输入需求描述，运行python代码后返回运行结果
     """
-    llm= ChatOpenAI(model_name='qwen2') 
+    
     prompt=PromptTemplate.from_template("""
      你是个数据分析师，请根据以下要求，直接生成python代码，供运行。   
      要求如下：
      {data}
     """)
-    codechain={"data":RunnablePassthrough()}|prompt|llm|StrOutputParser()
+    codechain={"data":RunnablePassthrough()}|prompt|model|StrOutputParser()
     code = codechain.invoke(data)
     return PythonREPLTool().run(code)
 
