@@ -3,15 +3,17 @@ from langchain_core.tools import tool
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
-import re
+import re,dotenv,os
 import json
 import operator
 from datetime import datetime
 from langchain_experimental.tools import PythonREPLTool
 from langchain_community.chat_models import ChatOllama
-
-model= ChatOllama( model="qwen2")
-    
+dotenv.load_dotenv()
+model=ChatOllama(
+    base_url=os.getenv("OLLAMA_BASE_URL","http://127.0.0.1:11434"),
+    model=os.getenv("OLLAMA_MODEL","qwen2:1.5b") #模型用的qwen2
+)
 
 
 
