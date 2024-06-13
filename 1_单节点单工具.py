@@ -1,9 +1,11 @@
+# 绑定了3个工具，分别是天气查询、获取当前时间、数据处理
+
+
 
 from typing import Annotated, TypedDict, Union
 from langgraph.graph import END, StateGraph
 from langchain_core.messages import BaseMessage
 from langchain_core.agents import AgentAction, AgentFinish
-from langgraph.prebuilt.tool_node import ToolNode
 from langgraph.prebuilt import ToolExecutor, ToolInvocation
 import operator
 from langchain import hub

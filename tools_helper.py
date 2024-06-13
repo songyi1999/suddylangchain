@@ -63,6 +63,16 @@ def data_process(data: str) -> str:
     return PythonREPLTool().run(code)
 
 
+def  display(runnable):
+    from IPython.display import Image, display
+    try:
+        display(Image(runnable.get_graph(xray=True).draw_mermaid_png()))
+    except Exception:
+        # This requires some extra dependencies and is optional
+        pass
+
+
+
 def  main():
     # python_repl_tool测试
     python_repl_tool = PythonREPLTool()
