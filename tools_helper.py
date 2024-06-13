@@ -63,6 +63,22 @@ def data_process(data: str) -> str:
     return PythonREPLTool().run(code)
 
 
+# 网站搜索工具
+@tool
+def search(question:str)->str:
+    """  the  input type is String  question, return search result. """
+    url = f"http://47.240.44.238:3000/search?query={question}"
+    # print(url)
+    try:
+        loader = WebBaseLoader(url)
+        doc= loader.load()
+        return doc[0].page_content
+    except Exception as e:
+        return ''
+
+
+
+# 显示图结构
 def  display(runnable):
     from IPython.display import Image, display
     try:
@@ -70,6 +86,9 @@ def  display(runnable):
     except Exception:
         # This requires some extra dependencies and is optional
         pass
+
+
+
 
 
 
