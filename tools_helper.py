@@ -15,7 +15,15 @@ model=ChatOllama(
     model=os.getenv("OLLAMA_MODEL","qwen2:1.5b") #模型用的qwen2
 )
 
+# 人类助手
+@tool
+def RequestAssistance(question:str)->str:
+    """Escalate the conversation to an expert. Use this if you are unable to assist directly or if the user requires support beyond your permissions.
 
+    To use this function, relay the user's 'request' so the expert can provide the right guidance.
+    """
+    resoonse=input(f"{question}\n")
+    return resoonse
 
 # 天气预报
 # https://wttr.in/Shanghai?format=j1
